@@ -1,0 +1,42 @@
+[
+    {
+      "foodName": "Chicken Burger",
+      "price": 120,
+      "foodType": "non-veg",
+      "createdAt": "2023-06-06T11:38:37.862Z",
+      "updatedAt": "2023-06-06T11:38:37.862Z",
+      "id": "647f1abdc45b4f2451eadbf2"
+    },
+    {
+      "foodName": "Ham Burger",
+      "price": 150,
+      "foodType": "non-veg",
+      "createdAt": "2023-06-06T11:39:03.189Z",
+      "updatedAt": "2023-06-06T11:39:03.189Z",
+      "id": "647f1ad7c45b4f2451eadbf8"
+    },
+    {
+      "foodName": "Chowein",
+      "price": 120,
+      "foodType": "non-veg",
+      "createdAt": "2023-06-06T11:39:55.334Z",
+      "updatedAt": "2023-06-06T11:39:55.334Z",
+      "id": "647f1b0bbe970b2f025be58b"
+    },
+    {
+      "foodName": "Lasi",
+      "price": 60,
+      "foodType": "veg",
+      "createdAt": "2023-06-06T11:45:51.735Z",
+      "updatedAt": "2023-06-06T11:45:51.735Z",
+      "id": "647f1c6fd8cafb732eccd8b6"
+    },
+    {
+      "foodName": "Panipuri",
+      "price": 60,
+      "foodType": "veg",
+      "createdAt": "2023-06-06T11:46:04.473Z",
+      "updatedAt": "2023-06-06T11:46:04.473Z",
+      "id": "647f1c7cd8cafb732eccd8c0"
+    }
+  ]

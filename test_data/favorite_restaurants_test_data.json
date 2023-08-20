@@ -1,0 +1,30 @@
+[
+    {
+      "restaurantsName": "Santosh Restaurant Sandar",
+      "ownerName": "Santosh Majhi",
+      "location": "Delibazar, Kathmandu",
+      "picture": "photo22035c70-f6ea-4cc7-9d40-52dbc2b3f62a.jpg",
+      "contact": "9876567656"
+    },
+    {
+      "restaurantsName": "Rohit Cafe",
+      "ownerName": "Rohit Shrestha",
+      "location": "ktm, Nepal",
+      "picture": "photo0fc00b86-e5b6-46ef-9acf-1763273e1672.jpg",
+      "contact": "0146834343"
+    },
+    {
+      "restaurantsName": "Java Coffee - R",
+      "ownerName": "Rajesh Hamal",
+      "location": "Kathmandu",
+      "picture": "photof359c017-7ce8-445c-9f1c-645c151afbca.jpg",
+      "contact": "9876567676"
+    },
+    {
+      "restaurantsName": "Plaza P",
+      "ownerName": "Roman Karki",
+      "location": "New Road, Pokhara",
+      "picture": "photo85be6fe8-c384-41e8-b523-24a2253487c8.jpg",
+      "contact": "016756789"
+    }
+  ]
