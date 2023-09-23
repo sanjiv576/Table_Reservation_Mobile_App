@@ -1,5 +1,10 @@
 ### Demo link: https://youtu.be/CiIspoPuB3w
 [Demo link](https://youtu.be/CiIspoPuB3w)
+
+#### New features to be implemented:
+1. Options to pay by scanning QR.
+2. Send SMS to the customers, when their reservation or food order is accepted.
+3. Add stories by restaurant owners to attract customers. (Both customer and owner must see separately)
 # table_reservation_mobile_app
 
 A new Flutter project.
