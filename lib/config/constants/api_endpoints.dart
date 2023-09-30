@@ -4,10 +4,10 @@ class ApiEndpoints {
   static const Duration receiveTimeout = Duration(seconds: 2000);
 
 // for android
-  // static const String baseUrl = "http://10.0.2.2:3004";
+  static const String baseUrl = "http://10.0.2.2:3004";
 
   // for android  mobile--> ip address win
-  static const String baseUrl = "http://192.168.1.65:3004";
+  // static const String baseUrl = "http://192.168.1.65:3004";
 
   // college ip address
   // static const String baseUrl = "http://192.168.137.1:3004";
