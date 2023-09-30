@@ -67,6 +67,8 @@ dependencies:
   fluttertoast: ^8.2.2
   image_gallery_saver: ^2.0.3
   share_plus: ^7.0.2
+  khalti_flutter: ^3.0.0
+  flutter_dotenv: ^5.1.0
   
 
 dev_dependencies:
@@ -107,6 +109,7 @@ flutter:
     - assets/images/png/
     - assets/images/png_dashboard/
     - test_data/
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
