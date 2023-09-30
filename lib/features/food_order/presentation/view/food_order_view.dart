@@ -1,8 +1,11 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
 
 import '../../../../core/common/widget/custom_appbar_widget.dart';
 import '../../../../core/common/widget/device_size.dart';
+import '../../../../core/common/widget/snackbar_messages.dart';
 import '../../../auth/presentation/state/auth_state.dart';
 import '../../../food_menu/domain/entity/food_menu_entity.dart';
 import '../../../food_menu/presentation/state/food_menu_state.dart';
@@ -41,6 +44,70 @@ class _FoodOrderViewState extends ConsumerState<FoodOrderView> {
     });
   }
 
+  int _getAmount() => _foodOrderAmount.round();
+
+  void _openKhaltiPaymentView(BuildContext context) {
+    var config = PaymentConfig(
+      // Note: Because of limitaion in Khalti test payment Rs 10 send as deafult instead of _getAmount()
+      amount: 10 * 100,
+      productIdentity: '5510-2021',
+      productName: 'Food Items',
+      // productUrl: 'https://www.khalti.com/#/bazaar',
+      // additionalData: {
+      //   'vendor': 'Table Reservation ',
+      // },
+    );
+
+    KhaltiScope.of(context).pay(
+      config: config,
+      preferences: [
+        PaymentPreference.khalti,
+        PaymentPreference.connectIPS,
+        PaymentPreference.eBanking,
+        PaymentPreference.sct,
+      ],
+      onSuccess: (successModel) {
+        FoodOrderEntity foodOrder = FoodOrderEntity(
+          date: PickDateTime.convertDate(date: DateTime.now()),
+          time: PickDateTime.convertTime(time: TimeOfDay.now()),
+          items: _selectedFoodItems,
+          status: 'pending',
+          isPaid: true,
+          totalAmount: _foodOrderAmount,
+          userId: AuthState.userEntity!.id!,
+          userName: AuthState.userEntity!.fullName,
+        );
+
+        ref.watch(foodOrderViewModelProvider.notifier).createFoodOrder(
+            restaurantId: RestaurantState.restaurantId,
+            foodOrderEntity: foodOrder,
+            context: context);
+        showSnackbarMsg(
+          context: context,
+          targetTitle: 'Success',
+          targetMessage: 'Payment success',
+          type: ContentType.success,
+        );
+      },
+      onFailure: (failureModel) {
+        showSnackbarMsg(
+          context: context,
+          targetTitle: 'Failed',
+          targetMessage: 'Failed in paymebt',
+          type: ContentType.failure,
+        );
+      },
+      onCancel: () {
+        showSnackbarMsg(
+          context: context,
+          targetTitle: 'Cancellation',
+          targetMessage: 'Payment is cancelled.',
+          type: ContentType.warning,
+        );
+      },
+    );
+  }
+
   void _removeFromCart(int index) {
     _foodOrderAmount -=
         _selectedFoodItems[index].price * _selectedFoodItems[index].quantity;
@@ -50,21 +117,8 @@ class _FoodOrderViewState extends ConsumerState<FoodOrderView> {
   }
 
   void _placeOrder() {
-    FoodOrderEntity foodOrder = FoodOrderEntity(
-      date: PickDateTime.convertDate(date: DateTime.now()),
-      time: PickDateTime.convertTime(time: TimeOfDay.now()),
-      items: _selectedFoodItems,
-      status: 'pending',
-      isPaid: false,
-      totalAmount: _foodOrderAmount,
-      userId: AuthState.userEntity!.id!,
-      userName: AuthState.userEntity!.fullName,
-    );
-
-    ref.watch(foodOrderViewModelProvider.notifier).createFoodOrder(
-        restaurantId: RestaurantState.restaurantId,
-        foodOrderEntity: foodOrder,
-        context: context);
+    // open Khalti page
+    _openKhaltiPaymentView(context);
   }
 
   void _showCart() {
