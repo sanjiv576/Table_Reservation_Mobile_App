@@ -70,11 +70,12 @@ class CustomerReservationHistoryView extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 10),
-            if (reservationState.isLoading) ...{
-              const Center(
-                child: CircularProgressIndicator(),
-              ),
-            } else if (reservationState.error != null) ...{
+            // if (reservationState.isLoading) ...{
+            //   const Center(
+            //     child: CircularProgressIndicator(),
+            //   ),
+            // } 
+             if (reservationState.error != null) ...{
               Expanded(
                   child: Center(
                 child: Text(
