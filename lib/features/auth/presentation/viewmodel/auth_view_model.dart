@@ -4,6 +4,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../config/router/app_route.dart';
 import '../../../../core/common/widget/snackbar_messages.dart';
@@ -49,6 +50,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
         // registration success
         (registerSuccess) {
       state = state.copyWith(isLoading: false, error: null);
+
+      Fluttertoast.showToast(
+          msg: 'User registration is successful. Now login.');
+      Navigator.popAndPushNamed(context, AppRoute.signInRoute);
     });
   }
 

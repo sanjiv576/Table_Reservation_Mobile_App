@@ -48,7 +48,8 @@ class IntroView extends ConsumerWidget {
               child: Container(),
             ),
             globalFooter: SizedBox(
-              width: DeviceSize.width * .75,
+              // width: DeviceSize.width * .75,
+              width: double.infinity,
               height: DeviceSize.height * .07,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
