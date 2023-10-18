@@ -138,6 +138,10 @@ class RestaurantRemoteDatatSource {
       );
 
       if (response.statusCode == 201) {
+        // store restaurant id in the state
+        RestaurantState.restaurantId = response.data['id'];
+        // set the restaurantId if it is the restaurant owner
+        userSharedPrefs.setRestaurantId(response.data['id']);
         return const Right(true);
       } else {
         return Left(
@@ -242,14 +246,12 @@ class RestaurantRemoteDatatSource {
       );
 
       if (response.statusCode == 200) {
-
         // List<GetFavoriteEntity> favoriteEntityList = (response.data
         //         as List<dynamic>)
         //     .map<GetFavoriteEntity>((json) => GetFavoriteEntity.fromJson(json))
         //     .toList();
 
         FavoriteState.allFavoriteRestaurants = response.data;
-       
 
         return const Right(true);
       } else {
@@ -290,7 +292,6 @@ class RestaurantRemoteDatatSource {
       );
 
       if (response.statusCode == 200) {
-
         // store old details
         RestaurantEntity oldRestaurantDetails =
             RestaurantState.restaurantEntity!;
@@ -325,7 +326,6 @@ class RestaurantRemoteDatatSource {
           ),
         );
         if (res.statusCode == 200) {
-
           // store old details
           UserEntity oldUserDetails = AuthState.userEntity!;
 

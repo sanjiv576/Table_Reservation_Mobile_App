@@ -105,11 +105,10 @@ class AuthRemoteDataSource {
 
         // store restaurantId if the user is Restaurant Owner
         if (res.data['user']['role'] == 'restaurant owner') {
-          RestaurantState.restaurantId =
-              res.data['user']['restaurantId'] ?? 'NA';
-
+        
           // also get the restaurant
-          String restaurantId = res.data['user']['restaurantId'] ?? 'NA';
+          // String restaurantId = res.data['user']['restaurantId'] ?? 'NA';
+          String restaurantId = res.data['user']['restaurantId'];
 
           // set the restaurantId if it is the restaurant owner
           userSharedPrefs.setRestaurantId(restaurantId);
